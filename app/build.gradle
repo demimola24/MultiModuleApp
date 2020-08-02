@@ -30,11 +30,14 @@ android {
     }
 
 
+    dynamicFeatures = [":cityfeature", ":coordinatefeature"]
+
+
 }
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     api project(':core')
     api project(':data')

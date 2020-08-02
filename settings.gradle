@@ -1,2 +1,2 @@
-include ':app', ':core', ':data', ':domain', ':usecases'
+include ':app', ':core', ':data', ':domain', ':usecases', ':cityfeature', ':coordinatefeature'
 rootProject.name='LayerModularization'
