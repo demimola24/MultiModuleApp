@@ -5,29 +5,20 @@ import android.app.Application
 import com.free.core.di.modules.CoreModule
 import dagger.BindsInstance
 import dagger.Component
-import dagger.android.AndroidInjectionModule
-import dagger.android.AndroidInjector
 import javax.inject.Singleton
 /**
  * @author Demimola on 2/13/18.
- * Core Compnent Class
+ * Core Component Class
  * */
+
 @Singleton
-@Component(
-    modules = [
-        AndroidInjectionModule::class,CoreModule::class]
-)
+@Component(modules = [CoreModule::class])
 interface CoreComponent {
-    @Component.Builder
+
     interface Builder {
-        @BindsInstance
-        fun application(application: Application): Builder
-        fun appModule(appModule: CoreModule): Builder
+        fun coreModule(coreModule: CoreModule): Builder
         fun build(): CoreComponent
     }
-
-     fun inject(application: CoreApplication)
-
-     fun inject(activity: Activity)
+    fun inject(activity: Activity)
 
 }

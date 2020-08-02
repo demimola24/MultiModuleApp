@@ -23,44 +23,13 @@ class CoreInjector {
 
         fun init(app: CoreApplication) {
             DaggerCoreComponent.builder()
-                .application(app)
-                .appModule(CoreModule(app))
+                .coreModule(CoreModule(app))
                 .build()
-                .also { app.appComponent = it }
-                .inject(app)
-
-            app.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallback() {
-                override fun onActivityCreated(activity: Activity, bundle: Bundle?) {
-                    super.onActivityCreated(activity, bundle)
-                    handleActivity(activity)
-                }
-
-            })
-        }
-
-        fun handleActivity(activity: Activity) {
-            if (activity is HasAndroidInjector) {
-                AndroidInjection.inject(activity)
-            }
-
-            (activity as? FragmentActivity)?.supportFragmentManager?.registerFragmentLifecycleCallbacks(
-                object : FragmentManager.FragmentLifecycleCallbacks() {
-
-                    override fun onFragmentPreAttached(
-                        fm: FragmentManager,
-                        f: Fragment,
-                        context: Context
-                    ) {
-                        super.onFragmentPreAttached(fm, f, context)
-
-                        if (f is Injectable) {
-                            AndroidSupportInjection.inject(f)
-                        }
-                    }
-                }, true
-            )
+                .also { app.coreComponent = it }
 
         }
+
+
     }
 
 }

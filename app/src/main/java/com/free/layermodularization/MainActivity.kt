@@ -6,12 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.free.core.di.CoreApplication
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
+import com.free.layermodularization.di.MainInjector
 
 import kotlinx.android.synthetic.main.activity_main.*
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        CoreApplication.coreComponent(this@MainActivity).inject(this)
+        //CoreApplication.coreComponent(this@MainActivity).inject(this)
+        MainInjector.init(this@MainActivity.application as CoreApplication)
 
 
         fab.setOnClickListener { view ->
