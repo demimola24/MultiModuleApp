@@ -3,12 +3,26 @@
     package="com.free.cityfeature">
 
     <dist:module
-        dist:instant="false"
+        dist:instant="true"
         dist:title="@string/title_cityfeature">
         <dist:delivery>
             <dist:install-time />
         </dist:delivery>
         <dist:fusing dist:include="true" />
     </dist:module>
+
+    <application
+        android:theme="@style/AppTheme"
+        android:hasCode="true"
+        >
+        <activity
+            android:name=".CityActivity"
+            android:label= "">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+    </application>
+
 </manifest>
 

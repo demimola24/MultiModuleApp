@@ -1,5 +1,6 @@
 package com.free.layermodularization
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -21,9 +22,10 @@ class MainActivity : AppCompatActivity() {
         MainInjector.init(this@MainActivity.application as CoreApplication)
 
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        fab.setOnClickListener { _ ->
+            val intent = Intent()
+            intent.setClassName(this, "com.free.cityfeature.CityActivity")
+            startActivity(intent)
         }
     }
 

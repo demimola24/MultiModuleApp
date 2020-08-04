@@ -16,6 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -55,6 +56,9 @@ dependencies {
 
     api "com.google.android.material:material:${versions.material}"
     api "androidx.constraintlayout:constraintlayout:${versions.constraint_layout}"
+
+
+    api 'com.google.android.play:core:1.8.0'
 
     /**Navigation*/
     api "androidx.navigation:navigation-fragment-ktx:$versions.navigation"

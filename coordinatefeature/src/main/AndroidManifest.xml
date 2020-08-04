@@ -10,5 +10,19 @@
         </dist:delivery>
         <dist:fusing dist:include="true" />
     </dist:module>
+
+    <application
+        android:hasCode="true"
+        android:theme="@style/AppTheme"
+        >
+        <activity
+            android:name=".CoordinateActivity"
+            android:label= "">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity>
+    </application>
+
 </manifest>
 

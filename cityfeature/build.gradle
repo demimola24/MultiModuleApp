@@ -1,5 +1,12 @@
 apply plugin: 'com.android.dynamic-feature'
 
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+
 android {
     compileSdkVersion 30
     
@@ -11,6 +18,9 @@ android {
         versionCode 1
         versionName "1.0"
 
+        // Enabling multidex support.
+        multiDexEnabled true
+
     }
 
 
@@ -19,4 +29,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':app')
+    implementation project(':core')
+    implementation "androidx.multidex:multidex:2.0.1"
 }
