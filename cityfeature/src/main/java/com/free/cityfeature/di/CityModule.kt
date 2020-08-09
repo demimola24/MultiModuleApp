@@ -14,10 +14,4 @@ class CityModule{
         val service = retrofit.create(WeatherByCityService::class.java)
         return WeatherByCityRepository(service)
     }
-
-    @Provides
-    fun provideWeatherByCoordinateDataSource(retrofit: Retrofit): WeatherByCoordinateDataSource {
-        val service = retrofit.create(WeatherByCoordinateService::class.java)
-        return WeatherByCoordinateRepository(service)
-    }
 }
