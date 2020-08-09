@@ -1,17 +1,18 @@
-package com.free.cityfeature.viewmodel
+package com.free.coordinatefeature.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.free.data.WeatherByCityDataSource
+import com.free.data.WeatherByCoordinateDataSource
 import com.free.domain.WeatherStatus
 import com.mintfintech.app.event.UIEvent
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class CityViewModel
-@Inject internal constructor(private val dataSource: WeatherByCityDataSource) : ViewModel(){
+class CoordinateViewModel
+@Inject internal constructor(private val dataSource: WeatherByCoordinateDataSource) : ViewModel(){
     private val _progress = MutableLiveData<UIEvent<Boolean>>()
     val progress: LiveData<UIEvent<Boolean>> = _progress
 
@@ -21,12 +22,12 @@ class CityViewModel
     private val _getWeatherStatus = MutableLiveData<UIEvent<WeatherStatus>>()
     val getWeatherStatus: LiveData<UIEvent<WeatherStatus>> = _getWeatherStatus
 
-    fun generateWeatherStatus(cityId: String) {
+    fun generateWeatherStatus(long: String, lat: String) {
         viewModelScope.launch {
             //show progress
             _progress.value = UIEvent(true)
             try {
-                val response = dataSource.locationByCity(cityId,"")
+                val response = dataSource.locationByCoordinate(lat,long, "")
                 response.let {WeatherStatus ->
                     _getWeatherStatus.value = UIEvent(WeatherStatus)
                 }
