@@ -1,8 +1,8 @@
-package com.free.cityfeature.di
+package com.free.coordinatefeature.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.free.cityfeature.viewmodel.CityViewModel
+import com.free.coordinatefeature.viewmodel.CoordinateViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -13,8 +13,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(CityViewModel::class)
-    abstract fun bindCityViewModel(viewModel: CityViewModel): ViewModel
+    @ViewModelKey(CoordinateViewModel::class)
+    abstract fun bindCoordinateViewModel(viewModel: CoordinateViewModel): ViewModel
 
     /**
      * Provides the ViewModelFactory

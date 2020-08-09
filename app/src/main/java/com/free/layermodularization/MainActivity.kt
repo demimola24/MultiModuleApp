@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        //CoreApplication.coreComponent(this@MainActivity).inject(this)
         MainInjector.init(this.application as CoreApplication)
 
 

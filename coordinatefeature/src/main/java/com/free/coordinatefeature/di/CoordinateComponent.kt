@@ -6,7 +6,7 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 
 @ModuleScope
-@Component(modules = [CoordinateModule::class, AndroidInjectionModule::class, CoreModule::class])
+@Component(modules = [CoordinateModule::class, AndroidInjectionModule::class, CoreModule::class, ViewModelModule::class])
 interface CoordinateComponent {
 
     @Component.Builder

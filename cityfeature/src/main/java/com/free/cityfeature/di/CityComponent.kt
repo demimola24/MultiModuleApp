@@ -8,7 +8,7 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 
 @ModuleScope
-@Component(modules = [CityModule::class, AndroidInjectionModule::class, CoreModule::class])
+@Component(modules = [CityModule::class, AndroidInjectionModule::class, CoreModule::class,ViewModelModule::class])
 interface CityComponent {
 
     @Component.Builder
