@@ -3,7 +3,7 @@
     package="com.free.cityfeature">
 
     <dist:module
-        dist:instant="true"
+        dist:instant="false"
         dist:title="@string/title_cityfeature">
         <dist:delivery>
             <dist:install-time />

@@ -17,19 +17,19 @@ import dagger.android.support.AndroidSupportInjection
  * @author Demimola on 2/13/18.
  * Core Injector Class
  * */
-class CoreInjector {
-
-    companion object {
-
-        fun init(app: CoreApplication) {
-            DaggerCoreComponent.builder()
-                .coreModule(CoreModule(app))
-                .build()
-                .also { app.coreComponent = it }
-
-        }
-
-
-    }
-
-}
+//class CoreInjector {
+//
+//    companion object {
+//
+//        fun init(app: CoreApplication) {
+//            DaggerCoreComponent.builder()
+//                .coreModule(CoreModule(app))
+//                .build()
+//                .also { app.coreComponent = it }
+//
+//        }
+//
+//
+//    }
+//
+//}

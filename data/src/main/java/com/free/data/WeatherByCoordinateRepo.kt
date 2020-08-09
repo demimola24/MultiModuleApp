@@ -1,7 +1,7 @@
 package com.free.data
 
+import com.free.core.di.scope.ModuleScope
 import com.free.domain.WeatherStatus
-import com.mintfintech.app.di.scope.FeatureScope
 import retrofit2.http.POST
 import retrofit2.http.Path
 import javax.inject.Inject
@@ -16,7 +16,7 @@ interface WeatherByCoordinateDataSource {
     suspend fun locationByCoordinate(lat: String,lon: String,key: String): WeatherStatus
 }
 
-@FeatureScope
+@ModuleScope
 class WeatherByCoordinateRepository @Inject constructor(private val apiService: WeatherByCoordinateService) :
     WeatherByCoordinateDataSource {
     override suspend fun locationByCoordinate(lat: String,lon: String,key: String): WeatherStatus{

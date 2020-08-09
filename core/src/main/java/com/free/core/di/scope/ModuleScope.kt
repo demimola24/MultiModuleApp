@@ -1,4 +1,4 @@
-package com.mintfintech.app.di.scope
+package com.free.core.di.scope
 
 import javax.inject.Scope
 
@@ -9,4 +9,4 @@ import javax.inject.Scope
  **/
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
-annotation class FeatureScope
+annotation class ModuleScope

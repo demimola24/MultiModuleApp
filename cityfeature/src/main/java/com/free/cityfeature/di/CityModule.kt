@@ -1,4 +1,4 @@
-package com.free.data.di
+package com.free.cityfeature.di
 import com.free.data.*
 import com.google.gson.Gson
 import dagger.Module
@@ -7,8 +7,8 @@ import retrofit2.Retrofit
 
 
 @Module
-class DataSourceModule{
-    
+class CityModule{
+
     @Provides
     fun provideWeatherByCityDataSource(retrofit: Retrofit): WeatherByCityDataSource {
         val service = retrofit.create(WeatherByCityService::class.java)

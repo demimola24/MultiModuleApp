@@ -2,7 +2,6 @@ package com.free.core.di
 
 import android.app.Application
 import android.content.Context
-import com.free.core.di.CoreComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -13,12 +12,12 @@ class CoreApplication : Application(), HasAndroidInjector {
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
-    lateinit var coreComponent: CoreComponent
+  //  lateinit var coreComponent: CoreComponent
 
     override fun onCreate() {
         super.onCreate()
         //init injector
-        CoreInjector.init(this)
+  //      CoreInjector.init(this)
     }
 
 
@@ -28,11 +27,11 @@ class CoreApplication : Application(), HasAndroidInjector {
 //        }
 //    }
 
-    companion object {
-        @JvmStatic
-        fun coreComponent(context: Context) =
-            (context.applicationContext as CoreApplication).coreComponent
-    }
+//    companion object {
+//        @JvmStatic
+//        fun coreComponent(context: Context) =
+//            (context.applicationContext as CoreApplication).coreComponent
+//    }
 
     override fun androidInjector(): AndroidInjector<Any> {
         return androidInjector
