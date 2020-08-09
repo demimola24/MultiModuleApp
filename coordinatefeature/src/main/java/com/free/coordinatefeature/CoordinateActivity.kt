@@ -2,6 +2,8 @@ package com.free.coordinatefeature
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.free.coordinatefeature.di.CoordinateInjector
+import com.free.core.di.CoreApplication
 import kotlinx.android.synthetic.main.coordinate_activity.*
 
 class CoordinateActivity : AppCompatActivity() {
@@ -11,7 +13,7 @@ class CoordinateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.coordinate_activity)
         setSupportActionBar(toolbar)
-        //CoreApplication.coreComponent(this@MainActivity).inject(this)
+        CoordinateInjector.init(this.application as CoreApplication)
 
     }
 

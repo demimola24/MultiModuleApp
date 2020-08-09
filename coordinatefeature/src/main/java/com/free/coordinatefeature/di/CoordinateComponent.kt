@@ -1,6 +1,5 @@
 package com.free.coordinatefeature.di
 
-import com.free.coordinatefeature.CoordinateActivity
 import com.free.coordinatefeature.scope.ModuleScope
 import com.free.core.di.modules.CoreModule
 import dagger.Component
