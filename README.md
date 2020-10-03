@@ -20,7 +20,8 @@ Dependency Injection Gragh (using Dagger 2)
 <img src="https://github.com/demimola24/MultiModuleApp/blob/master/dependency_graph.png" height="400">
 
 
-App Screenshot (Designed Inspired by Google Search)
+
+### App Screenshot (Designed Inspired by Google Search)
 
 <img src="https://github.com/demimola24/MultiModuleApp/blob/master/screen_one.png" width="250" height="530">
 
