@@ -29,3 +29,6 @@ Dependency Injection Gragh (using Dagger 2)
 
 <img src="https://github.com/demimola24/MultiModuleApp/blob/master/screen_three.png" width="250" height="530">
 
+
+Credits:
+https://medium.com/androiddevelopers/dependency-injection-in-a-multi-module-project-1a09511c14b7
