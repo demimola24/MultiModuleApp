@@ -35,8 +35,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':app')
-    implementation project(':core')
-    implementation project(':data')
   //  implementation "androidx.multidex:multidex:2.0.1"
 
     /**Dagger*/

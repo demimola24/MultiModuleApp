@@ -21,14 +21,7 @@ class MainApplication : Application(), CoreComponentProvider {
     }
 
     lateinit var coreComponent: CoreComponent
-//
-//    @Inject
-//    lateinit var androidInjector: DispatchingAndroidInjector<Any>
-//
-//    override fun androidInjector(): AndroidInjector<Any> {
-//        return androidInjector
-//    }
-//
+
 
     override fun onCreate() {
         super.onCreate()
@@ -39,24 +32,6 @@ class MainApplication : Application(), CoreComponentProvider {
             .coreModule(CoreModule())
             .build()
         coreComponent.inject(this)
-        Log.d("CoreInjector","CoreApplication Oncreated")
 
     }
-
-
-//    companion object {
-//        val appComponent by lazy {
-//            DaggerCoreComponent.create()
-//        }
-//    }
-//
-//    companion object {
-//        @JvmStatic
-//        fun coreComponent(context: Context) =
-//            (context.applicationContext as MainApplication).coreComponent
-//    }
-//
-//    override fun androidInjector(): AndroidInjector<Any> {
-//        return androidInjector
-//    }
 }

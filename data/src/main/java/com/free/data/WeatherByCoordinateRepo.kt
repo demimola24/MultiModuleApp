@@ -3,13 +3,13 @@ package com.free.data
 import com.free.core.di.scope.ModuleScope
 import com.free.domain.WeatherStatus
 import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.Query
 import javax.inject.Inject
 
 
 interface WeatherByCoordinateService {
-    @POST("weather?lat={lat}&lon={lon}&appid={key}")
-    suspend fun locationByCoordinate(@Path("lat") lat: String,@Path("lon") lon: String, @Path("key") key: String): WeatherStatus
+    @POST("weather")
+    suspend fun locationByCoordinate(@Query("lat") lat: String,@Query("lon") lon: String, @Query("appid") key: String): WeatherStatus
 }
 
 interface WeatherByCoordinateDataSource {

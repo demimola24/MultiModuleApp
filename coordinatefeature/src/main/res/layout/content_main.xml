@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".CoordinateActivity"
+    android:background="@drawable/map"
     tools:showIn="@layout/coordinate_activity">
 
     <TextView

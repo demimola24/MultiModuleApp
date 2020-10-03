@@ -13,8 +13,6 @@
     </dist:module>
 
     <application
-        android:name=".CoordinateApplication"
-        tools:replace="android:name"
         android:hasCode="true"
         android:theme="@style/AppTheme"
         >

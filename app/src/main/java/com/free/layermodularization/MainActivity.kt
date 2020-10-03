@@ -17,21 +17,11 @@ import com.google.gson.Gson
 import dagger.android.DispatchingAndroidInjector
 
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import retrofit2.Retrofit
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-
-//    @Inject
-//    lateinit var androidInjector: DispatchingAndroidInjector<Any>
-
-    @Inject
-    lateinit var gson: Gson
-
-
-//    override fun androidInjector(): AndroidInjector<Any> {
-//        return androidInjector
-//    }
 
     private val manager: SplitInstallManager by lazy {
         SplitInstallManagerFactory.create(this)
@@ -47,17 +37,33 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        Log.d("MainActivity","MainActivity Inject: ${gson.toString()}")
 
 
-
-        fab.setOnClickListener {_ ->
+        cityApp.setOnClickListener {
 
             val request = SplitInstallRequest.newBuilder()
                 .addModule("cityfeature")
                 .build()
 
-            manager.startInstall(request)
+            manager.startInstall(request).addOnSuccessListener {
+                val intent = Intent()
+                intent.setClassName(this, "com.free.cityfeature.CityActivity")
+                startActivity(intent)
+            }
+
+        }
+
+        coordinateApp.setOnClickListener {
+
+            val request = SplitInstallRequest.newBuilder()
+                .addModule("coordinatefeature")
+                .build()
+
+            manager.startInstall(request).addOnSuccessListener {
+                val intent = Intent()
+                intent.setClassName(this, "com.free.coordinatefeature.CoordinateActivity")
+                startActivity(intent)
+            }
 
         }
 
@@ -68,9 +74,7 @@ class MainActivity : AppCompatActivity() {
                     //showToast("Downloading feature")
                 }
                 SplitInstallSessionStatus.INSTALLED -> {
-                    val intent = Intent()
-                    intent.setClassName(this, "com.free.cityfeature.CityActivity")
-                    startActivity(intent)
+                    Log.d("SplitInstallManager","SplitInstallManager: installed")
                 }
                 else -> { /* Do nothing in this example */ }
             }

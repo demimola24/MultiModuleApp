@@ -27,7 +27,7 @@ class CoordinateViewModel
             //show progress
             _progress.value = UIEvent(true)
             try {
-                val response = dataSource.locationByCoordinate(lat,long, "")
+                val response = dataSource.locationByCoordinate(lat,long, "3bb5393f60824e2db7fa1f112db3d3bd")
                 response.let {WeatherStatus ->
                     _getWeatherStatus.value = UIEvent(WeatherStatus)
                 }

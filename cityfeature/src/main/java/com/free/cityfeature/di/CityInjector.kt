@@ -18,7 +18,6 @@ class CityInjector {
 
         fun init(activity: CityActivity) {
             DaggerCityComponent.builder()
-//                .cityModule(CityModule())
                 .coreComponent(InjectUtils.provideCoreComponent(activity.applicationContext))
                 .cityActivity(activity = activity)
                 .build()
@@ -33,10 +32,10 @@ class CityInjector {
 //            })
         }
 
+
+        //Handle fragments injection on entry into activity
+
         fun handleActivity(activity: Activity) {
-            if (activity is HasAndroidInjector) {
-                AndroidInjection.inject(activity)
-            }
 
             (activity as? FragmentActivity)?.supportFragmentManager?.registerFragmentLifecycleCallbacks(
                 object : FragmentManager.FragmentLifecycleCallbacks() {

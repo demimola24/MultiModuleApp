@@ -16,22 +16,10 @@ import kotlinx.android.synthetic.main.content_main.*
 import javax.inject.Inject
 
 class CityActivity : AppCompatActivity()  {
-//
-//    @Inject
-//    lateinit var androidInjector: DispatchingAndroidInjector<Any>
-
-
     @Inject
      lateinit var viewModelProviderFactory: ViewModelProvider.Factory
-//
 
     private val viewModel by viewModels<CityViewModel> { viewModelProviderFactory }
-
-
-//    override fun androidInjector(): AndroidInjector<Any> {
-//        return androidInjector
-//    }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,11 +31,17 @@ class CityActivity : AppCompatActivity()  {
 
         viewModel.generateWeatherStatus("2267226")
 
+        fab.setOnClickListener {
+            viewModel.generateWeatherStatus("2267226")
+        }
+
         with(viewModel) {
 
             progress.observe(this@CityActivity, Observer { uiEvent ->
                 uiEvent.getContentIfNotHandled()?.let {
-
+                    if(it){
+                        weather_degree.text = "...."
+                    }
                 }
             })
 

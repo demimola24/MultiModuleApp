@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LayerModularization</string>
+    <string name="app_name">Multi-Module App</string>
     <string name="action_settings">Settings</string>
     <string name="title_cityfeature">City Feature</string>
     <string name="title_coordinatefeature">Coordinate Feature</string>

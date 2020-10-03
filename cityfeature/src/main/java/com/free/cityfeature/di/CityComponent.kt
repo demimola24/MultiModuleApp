@@ -1,4 +1,5 @@
 package com.free.cityfeature.di
+
 import android.app.Activity
 import com.free.cityfeature.CityActivity
 import com.free.core.di.BaseActivityComponent
