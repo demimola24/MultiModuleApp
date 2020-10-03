@@ -5,7 +5,7 @@ or even just create a clear separation of concerns to make our project easier to
 
 This is a sample application showing a simple multi module application.
 
-##App Features:
+## App Features:
 - DFM for Weather via city (Lagos)
 - DFM for Weather via coordinate (Lagos)
 
