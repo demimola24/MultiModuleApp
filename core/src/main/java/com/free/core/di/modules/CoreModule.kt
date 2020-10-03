@@ -1,7 +1,8 @@
 package com.free.core.di.modules
 
+import android.app.Application
 import android.content.Context
-import com.free.core.di.CoreApplication
+import com.free.core.BuildConfig
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
@@ -14,12 +15,22 @@ import javax.inject.Singleton
 
 
 @Module
-class CoreModule(val app: CoreApplication) {
-    @Singleton
+class CoreModule {
+//    @Singleton
+//    @Provides
+//    internal fun provideContext(): Context {
+//        return app.applicationContext
+//    }
+
     @Provides
-    internal fun provideContext(): Context {
-        return app.applicationContext
-    }
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor().apply {
+            level = if (BuildConfig.DEBUG) {
+                HttpLoggingInterceptor.Level.BODY
+            } else {
+                HttpLoggingInterceptor.Level.NONE
+            }
+        }
 
     @Provides
     fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
@@ -37,12 +48,12 @@ class CoreModule(val app: CoreApplication) {
 
     @Provides
     @Singleton
-    fun provideRetrofitBuilder(client: Lazy<OkHttpClient>, gson: Gson
+    fun provideRetrofitBuilder(client: OkHttpClient, gson: Gson
     ): Retrofit {
 
         val retrofitBuilder = Retrofit.Builder()
-            .baseUrl("")
-            .callFactory(client.value)
+            .baseUrl("https://api.openweathermap.org/data/2.5/")
+            .callFactory(client)
             .addConverterFactory(GsonConverterFactory.create(gson))
 
         //get the okhttp3 client for retrofit so that we can inject the
@@ -68,10 +79,4 @@ class CoreModule(val app: CoreApplication) {
         return  retrofitBuilder.client(okhttp3clientBuilder.build()).build()
 
     }
-
-//    @Provides
-//    fun provideRegisterDataSource(retrofit: Retrofit): RegisterDataSource {
-//        val service = retrofit.create(RegisterService::class.java)
-//        return RegisterRepository(service)
-//    }
 }

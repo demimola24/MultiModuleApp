@@ -8,17 +8,30 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import com.free.core.di.CoreApplication
 import com.free.layermodularization.di.MainInjector
 import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
+import com.google.gson.Gson
+import dagger.android.DispatchingAndroidInjector
 
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Retrofit
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
+//    @Inject
+//    lateinit var androidInjector: DispatchingAndroidInjector<Any>
+
+    @Inject
+    lateinit var gson: Gson
+
+
+//    override fun androidInjector(): AndroidInjector<Any> {
+//        return androidInjector
+//    }
 
     private val manager: SplitInstallManager by lazy {
         SplitInstallManagerFactory.create(this)
@@ -28,9 +41,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //CoreApplication.coreComponent(this@MainActivity).inject(this@MainActivity)
+        MainInjector.init(this)
+
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        MainInjector.init(this.application as CoreApplication)
+
+        Log.d("MainActivity","MainActivity Inject: ${gson.toString()}")
+
 
 
         fab.setOnClickListener {_ ->
@@ -50,9 +68,9 @@ class MainActivity : AppCompatActivity() {
                     //showToast("Downloading feature")
                 }
                 SplitInstallSessionStatus.INSTALLED -> {
-//                    val intent = Intent()
-//                    intent.setClassName(this, "com.free.cityfeature.CityActivity")
-//                    startActivity(intent)
+                    val intent = Intent()
+                    intent.setClassName(this, "com.free.cityfeature.CityActivity")
+                    startActivity(intent)
                 }
                 else -> { /* Do nothing in this example */ }
             }

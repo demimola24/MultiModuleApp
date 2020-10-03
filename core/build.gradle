@@ -50,6 +50,8 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
     kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
 
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+
 
     /**Retrofit*/
     api "com.squareup.retrofit2:retrofit:${versions.retrofit}"

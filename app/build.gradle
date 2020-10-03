@@ -53,6 +53,7 @@ dependencies {
     api "com.google.dagger:dagger-android-support:${versions.dagger}"
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
     kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
+    annotationProcessor "com.google.dagger:dagger-android-processor:${versions.dagger}"
 
 
     api "com.google.android.material:material:${versions.material}"
@@ -77,6 +78,8 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutines}"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${versions.coroutines}"
 
+
+    api 'com.google.code.findbugs:jsr305:3.0.2'
 
     /**Gson*/
     api "com.google.code.gson:gson:${versions.gson}"

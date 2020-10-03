@@ -5,9 +5,10 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
-import com.free.core.di.CoreApplication
-import com.free.core.di.modules.CoreModule
+import com.free.cityfeature.CityActivity
 import com.free.core.di.modules.callbacks.Injectable
+import com.free.core.di.utils.InjectUtils
+import com.free.layermodularization.MainApplication
 import dagger.android.AndroidInjection
 import dagger.android.HasAndroidInjector
 import dagger.android.support.AndroidSupportInjection
@@ -15,12 +16,13 @@ import dagger.android.support.AndroidSupportInjection
 class CityInjector {
     companion object {
 
-        fun init(app: CoreApplication) {
+        fun init(activity: CityActivity) {
             DaggerCityComponent.builder()
-                .cityModule(CityModule())
-                .coreModule(CoreModule(app))
+//                .cityModule(CityModule())
+                .coreComponent(InjectUtils.provideCoreComponent(activity.applicationContext))
+                .cityActivity(activity = activity)
                 .build()
-                //.inject(app)
+                .inject(activity)
 
 //            app.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallback() {
 //                override fun onActivityCreated(activity: Activity, bundle: Bundle?) {

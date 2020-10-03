@@ -3,6 +3,7 @@ package com.free.core.di
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
@@ -23,9 +24,42 @@ import dagger.android.support.AndroidSupportInjection
 //
 //        fun init(app: CoreApplication) {
 //            DaggerCoreComponent.builder()
-//                .coreModule(CoreModule(app))
-//                .build()
+//                .coreModule(CoreModule())
 //                .also { app.coreComponent = it }
+//
+//
+//            app.registerActivityLifecycleCallbacks(object : ActivityLifecycleCallback() {
+//                override fun onActivityCreated(activity: Activity, bundle: Bundle?) {
+//                    handleActivity(activity)
+//                    super.onActivityCreated(activity, bundle)
+//
+//                }
+//
+//            })
+//
+//        }
+//
+//        fun handleActivity(activity: Activity) {
+//            if (activity is HasAndroidInjector) {
+//                AndroidInjection.inject(activity)
+//            }
+//
+//            (activity as? FragmentActivity)?.supportFragmentManager?.registerFragmentLifecycleCallbacks(
+//                object : FragmentManager.FragmentLifecycleCallbacks() {
+//
+//                    override fun onFragmentPreAttached(
+//                        fm: FragmentManager,
+//                        f: Fragment,
+//                        context: Context
+//                    ) {
+//                        super.onFragmentPreAttached(fm, f, context)
+//
+//                        if (f is Injectable) {
+//                            AndroidSupportInjection.inject(f)
+//                        }
+//                    }
+//                }, true
+//            )
 //
 //        }
 //

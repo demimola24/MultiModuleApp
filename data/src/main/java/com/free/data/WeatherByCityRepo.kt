@@ -4,12 +4,13 @@ import com.free.core.di.scope.ModuleScope
 import com.free.domain.WeatherStatus
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 import javax.inject.Inject
 
 
 interface WeatherByCityService {
-    @POST("weather?id={cityId}&appid={key}")
-    suspend fun locationByCity(@Path("cityId") cityId: String, @Path("key") key: String): WeatherStatus
+    @POST("weather")
+    suspend fun locationByCity(@Query("id") cityId: String, @Query("appid") key: String): WeatherStatus
 }
 
 interface WeatherByCityDataSource {
